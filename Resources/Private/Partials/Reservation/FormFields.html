@@ -1,0 +1,17 @@
+<p><label for="lastname">
+	<f:translate key="tx_ajadoevents_domain_model_reservation.lastname" /> <span class="required">*</span>
+</label>
+	<f:form.textbox property="lastname" /></p>
+<p><label for="firstname">
+	<f:translate key="tx_ajadoevents_domain_model_reservation.firstname" /> <span class="required">*</span>
+</label>
+	<f:form.textbox property="firstname" /></p>
+<p><label for="email">
+	<f:translate key="tx_ajadoevents_domain_model_reservation.email" /> <span class="required">*</span>
+</label>
+	<f:form.textbox property="email" /></p>
+<p><label for="participants">
+	<f:translate key="tx_ajadoevents_domain_model_reservation.participants" /> <span class="required">*</span>
+</label>
+	<f:form.select property="participants" options="{1: '1', 2: '2', 3: '3', 4: '4', 5: '5', 6: '6', 7: '7'}" /></p>
+	<f:form.hidden property="event" value="{event}" />

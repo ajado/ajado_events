@@ -1,0 +1,14 @@
+plugin.tx_ajadoevents {
+	view {
+		# cat=plugin.tx_ajadoevents/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:ajado_events/Resources/Private/Templates/
+		# cat=plugin.tx_ajadoevents/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:ajado_events/Resources/Private/Partials/
+		# cat=plugin.tx_ajadoevents/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:ajado_events/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_ajadoevents//a; type=int+; label=Default storage PID
+		storagePid = 
+	}
+}

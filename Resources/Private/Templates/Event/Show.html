@@ -1,0 +1,87 @@
+{namespace ext=Tx_AjadoEvents_ViewHelpers}
+<f:layout name="Default" />
+
+This Template is responsible for displaying a single view for a domain object
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        Show.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+<div class="image">
+	<f:if condition="{event.images -> f:count()}>0"><f:for each="{event.images}" as="image" iteration="it"><f:image src="uploads/tx_ajadoevents/{image}" width="300" height="300c" alt="{image}" /></f:for></f:if>
+</div>
+<div class="details">
+
+
+	<h3><f:for each="{event.categories}" as="category" iteration="it"><f:if condition="{category.visible}==1">{category.name} </f:if></f:for></h3>
+	<h2>{event.subtitle}<br /><span class="upper">{event.title}</span></h2>
+	
+	
+	<h4>Zeit:</h4>
+	<f:format.html parseFuncTSPath="">{event.dateInfo}</f:format.html>
+	
+	<h4>Ort:</h4>
+	<f:if condition="{event.inhouse}">
+		<f:then>Kulturforum Berlin</f:then>
+		<f:else>{event.location}</f:else>
+	</f:if>
+
+	
+	<f:format.html parseFuncTSPath="lib.parseFunc">{event.additionalInfo}</f:format.html>
+	
+	<f:if condition="{event.links}">
+		<h4>Links:</h4>
+		<f:format.html parseFuncTSPath="lib.parseFunc">{event.links}</f:format.html>
+  </f:if>
+</div>
+<div class="description">	
+	<p><f:format.html parseFuncTSPath="lib.parseFunc">{event.description}</f:format.html></p>
+</div>
+
+<f:if condition="{event.beforeOrEqualEventDay}">
+	<f:if condition="{event.beforeReservationStart}">
+		<p><i>Die Anmeldung für diese Veranstaltung ist ab {ext:format.dateTime(format: '%A, %e.&nbsp;%b&nbsp;%Y,&nbsp;%R', timestamp: event.reservationStarttime)} möglich.</i></p>
+	</f:if>
+	
+	<f:if condition="{event.reservationPossible}">
+		<script type="text/javascript">
+			$(document).ready(function() {
+			    $("#tx-ajado-events-openregistration-{event.uid}").click(function() {
+					$("#tx-ajado-events-openregistration-{event.uid}").hide();
+					$("#tx-ajado-events-registration-{event.uid}").fadeIn("slow");
+					var offsettop = parseInt($("body").css("height"));
+					window.scrollTo(0,offsettop);
+			    });
+				$("#tx-ajado-events-registration input").keypress(function(e){
+					if(e.which == 13){
+						$("#tx-ajado-events-registration form").submit();
+					}
+				});
+			});
+		</script>
+		<div id="tx-ajado-events-registration">
+			<div id="tx-ajado-events-registration-{event.uid}"<f:if condition="{hideReservation}"> style="display:none"</f:if>>
+				<f:render partial="FormErrors" />
+				
+				<f:form method="post" action="create" controller="Reservation" name="newReservation" arguments="{event : event}" object="{newReservation}">
+				<f:render partial="Reservation/FormFields" arguments="{event : event}" />
+					<f:form.submit value="Zur Bestätigung" />
+				</f:form>
+			</div>
+		</div>
+		<f:if condition="{hideReservation}"><input type="button" value="Anmeldung" id="tx-ajado-events-openregistration-{event.uid}" /></f:if>
+	</f:if>
+	
+	<f:if condition="{event.fullyBooked}">
+		<p><i>Für diesen Event ist online leider keine Reservierung mehr möglich. Sie können sich gerne telefonisch an uns wenden. Vielleicht ist noch der ein oder andere Platz für Sie frei – oder wir können Sie auf die Warteliste setzen.</i></p>
+	</f:if>
+</f:if>
+
+</f:section> 

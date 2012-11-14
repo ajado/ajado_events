@@ -1,0 +1,62 @@
+{namespace ext=Tx_AjadoEvents_ViewHelpers}
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+<table cellpadding="6"><tbody>
+	<f:for each="{events}" as="event">
+	
+	
+  <tr>
+    <td width="65" valign="top" style="font-family: Arial,Helvetica,sans-serif;">
+    <div style="font-size: 9px;line-height: 9px;text-transform: uppercase;">
+    	<f:if condition="{event.endDate} > 0">
+	      	<f:then>AB</f:then>
+	      	<f:else>{ext:format.dateTime(format: '%A', timestamp: event.startDate)}</f:else>
+	    </f:if>
+    </div>
+<div style="font-size: 50px;line-height: 50px;margin: 4px 0; {f:if( condition: '{event.inhouse}', then: 'color: #C81515;' )}">
+	{ext:format.dateTime(format: '%d', timestamp: event.startDate)}
+</div>
+<div style="font-size: 12px;line-height: 12px;text-transform: uppercase;">{ext:format.dateTime(format: '%b', timestamp: event.startDate)}</div></td>
+    <td width="150" valign="top">
+    <f:if condition="{event.images -> f:count()}>0">
+		<f:image src="uploads/tx_ajadoevents/{event.images.0}" width="140c" height="140" alt="{event.title}" />
+	</f:if>
+    <td style="font-family: Arial,Helvetica,sans-serif;" valign="top"><h2 style="font-size: 16px; line-height: 22px; margin:0; padding:0;">{event.subtitle}<br /><span style="text-transform: uppercase;">{event.title}</span></h2>
+	<div style="font-size: 12px; font-weight: bold;margin: 0.3em 0; color: #4c4c4c;">
+		<f:if condition="{event.inhouse}">
+			<f:then>Kulturforum Berlin</f:then>
+			<f:else>{event.location}</f:else>
+		</f:if>
+	</div>
+	<p style="font-size: 12px;line-height: 16px; margin:0; color: #4C4C4C"><ext:StripTags>{event.newsletterText}</ext:StripTags></p>
+	<p style="font-size: 12px;line-height: 16px; margin:0; color: #4C4C4C; text-align: right;">
+	<f:if condition="{event.reservationPossible}">
+		<f:then>
+	<f:link.action pageUid="{settings.singlePid}" controller="Event" action="show" arguments="{event : event}" target="_blank" style="font-size: 13px;">&gt; ANMELDUNG&nbsp;UND&nbsp;INFORMATION</f:link.action>
+		</f:then>
+		<f:else>
+	<f:link.action pageUid="{settings.singlePid}" controller="Event" action="show" arguments="{event : event}" target="_blank" style="font-size: 13px;">&gt; WEITERE&nbsp;INFORMATIONEN</f:link.action>
+		</f:else>
+	</f:if>
+	</p>
+    </td>
+  </tr>
+  <tr><td width="65" colspan="3" height="15"></td></tr>
+	</f:for>
+</tbody></table>
+
+</f:section>

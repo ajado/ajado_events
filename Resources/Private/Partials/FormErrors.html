@@ -1,0 +1,11 @@
+<f:form.errors>
+	<div class="error">
+		<f:if condition="{error.propertyName}">
+			<p>
+				<f:for each="{error.errors}" as="errorDetail">
+					<f:translate key="tx_ajadoevents_domain_model_reservation.error.{errorDetail.code}" /><br />
+				</f:for>
+			</p>
+		</f:if>
+	</div>
+</f:form.errors>

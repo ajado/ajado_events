@@ -1,0 +1,63 @@
+<f:layout name="Default" />
+
+This Template is responsible for displaying a single view for a domain object
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        Show.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+<h1>Reservierungsbestätigung</h1>
+<p><b>Anmeldung erfolgreich.</b></p>
+<p>Sie wurden für folgende Veranstaltung registriert:</p>
+<table class="tx-ajado-events" >
+	<tr>
+		<td class="left">Veranstaltung:</td>
+		<td class="right">
+			{reservation.event.title}
+		</td>
+	</tr>
+	<tr>
+		<td class="left">Ort:</td>
+		<td class="right">
+			<f:if condition="{reservation.event.inhouse}"><f:then>Kulturforum Berlin</f:then>
+			<f:else>{reservation.event.location}</f:else>
+			
+			</f:if>
+		</td>
+	</tr>	
+	<tr>
+		<td class="left">Beginn:</td>
+		<td class="right">{reservation.event.startTimeInfo}
+		</td>
+	</tr>		
+	<tr>
+		<td class="left">Name:</td>
+		<td class="right">
+			{reservation.firstname} {reservation.lastname} 
+		</td>
+	</tr>
+	<tr>
+		<td class="left">Email:</td>
+		<td class="right">
+			{reservation.email}
+		</td>
+	</tr>
+	<tr>
+		<td class="left">Teilnehmer:</td>
+		<td class="right">
+			{reservation.participants}
+		</td>
+	</tr>
+</table>
+
+<p>Einlass ist frühestens eine halbe Stunde vor Beginn. Wir ersuchen um Verständnis, dass nach Beginn der Veranstaltungen kein Einlass mehr möglich ist. Freie Platzwahl.</p>
+<p>Aufgrund der erhöhten Sicherheitsvorkehrungen sehen wir uns leider veranlasst Sie zu bitten, zu den Veranstaltungen einen Personalausweis, Reisepass, Führerschein o.ä. zur persönlichen Identifikation mitzuführen.</p>
+<p>Sie erhalten die Bestätigung ihrer Anmeldung auch in Kürze per Email.</p>
+<p>Wir bedanken uns für die Reservierung und freuen uns, Sie bald im Österreichischen Kulturforum Berlin begrüßen zu dürfen.</p> 
+</f:section>

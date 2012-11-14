@@ -1,0 +1,48 @@
+{namespace ext=Tx_AjadoEvents_ViewHelpers}
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+<table cellpadding="6"><tbody>
+  <tr>
+    <td width="65" style="font-family: Arial,Helvetica,sans-serif;" valign="top" >
+    <div style=" font-size: 9px;line-height: 9px;text-transform: uppercase;">
+    	<f:if condition="{event.endDate} > 0">
+	      	<f:then>AB</f:then>
+	      	<f:else>{ext:format.dateTime(format: '%A', timestamp: event_startdate)}</f:else>
+	    </f:if>
+    </div>
+<div style="font-size: 50px;line-height: 50px;margin: 4px 0; {f:if( condition: '{event.inhouse}', then: 'color: #C81515;' )}">
+	{ext:format.dateTime(format: '%d', timestamp: event_startdate)}
+</div>
+<div style="font-size: 12px;line-height: 12px;text-transform: uppercase;">{ext:format.dateTime(format: '%b', timestamp: event_startdate)}</div></td>
+    <td width="150" valign="top">
+    <f:if condition="{event_image -> f:count()}>0">
+		<f:image src="uploads/tx_ajadoevents/{event_image}" width="140c" height="140" alt="{event_title}" />
+	</f:if>
+    <td style="font-family: Arial,Helvetica,sans-serif;" valign="top"><h2 style="font-size: 16px; line-height: 22px; margin:0; padding:0;">{event_subtitle}<br /><span style="text-transform: uppercase;">{event_title}</span></h2>
+	<div style="font-size: 12px; font-weight: bold;margin: 0.3em 0; color: #4c4c4c;">
+		<f:if condition="{event_location">
+			<f:then>Kulturforum Berlin</f:then>
+			<f:else>{event_location}</f:else>
+		</f:if>
+	</div>
+	<p style="font-size: 12px;line-height: 16px; margin:0; color: #4C4C4C"><f:format.crop maxCharacters="250" respectHtml="false"><ext:StripTags>{event_text}</ext:StripTags></f:format.crop>
+			<f:link.external uri="{event_link}" target="_blank" style="font-size: 13px;">&gt; WEITERE&nbsp;INFORMATIONEN</f:link.external></p>
+    </td>
+  </tr>
+</tbody></table>
+
+</f:section>

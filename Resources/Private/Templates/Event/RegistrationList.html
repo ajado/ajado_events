@@ -1,0 +1,26 @@
+{namespace ext=Tx_AjadoEvents_ViewHelpers}
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+<ul class="with-bullets">
+	<f:for each="{events}" as="event">
+		<li>
+			<f:link.action pageUid="{settings.singlePid}" controller="Event" action="show" arguments="{event : event}">{event.subtitle} <span class="upper">{event.title}</span></f:link.action>: 
+			<f:if condition="{event.endDate} > 0"><f:then>Ab </f:then><f:else>{ext:format.dateTime(format: '%A', timestamp: event.startDate)} </f:else></f:if>{ext:format.dateTime(format: '%d', timestamp: event.startDate)} {ext:format.dateTime(format: '%b', timestamp: event.startDate)}, <f:if condition="{event.inhouse}"><f:then>Kulturforum Berlin</f:then><f:else>{event.location}</f:else></f:if>
+		</li>
+	</f:for>
+</ul>
+
+</f:section>

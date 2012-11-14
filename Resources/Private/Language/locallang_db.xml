@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'ajado_events'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tx_ajadoevents_domain_model_event">Event</label>
+			<label index="tx_ajadoevents_domain_model_event.title">Title</label>
+			<label index="tx_ajadoevents_domain_model_event.subtitle">Subtitle</label>
+			<label index="tx_ajadoevents_domain_model_event.start_date">Start Date</label>
+			<label index="tx_ajadoevents_domain_model_event.end_date">End Date</label>
+			<label index="tx_ajadoevents_domain_model_event.start_time">Start Time</label>
+			<label index="tx_ajadoevents_domain_model_event.end_time">End Time</label>
+			<label index="tx_ajadoevents_domain_model_event.location">Location</label>
+			<label index="tx_ajadoevents_domain_model_event.location_address">Location Address</label>
+			<label index="tx_ajadoevents_domain_model_event.inhouse">Inhouse</label>
+			<label index="tx_ajadoevents_domain_model_event.additional_info">Additional Info</label>
+			<label index="tx_ajadoevents_domain_model_event.description">Description</label>
+			<label index="tx_ajadoevents_domain_model_event.newsletter_text">Newsletter Text</label>
+			<label index="tx_ajadoevents_domain_model_event.images">Images</label>
+			<label index="tx_ajadoevents_domain_model_event.teaser_image">Teaser Image</label>
+			<label index="tx_ajadoevents_domain_model_event.links">Links</label>
+			<label index="tx_ajadoevents_domain_model_event.total_seats">Total Seats</label>
+			<label index="tx_ajadoevents_domain_model_event.reservation_starttime">Reservation Start</label>
+			<label index="tx_ajadoevents_domain_model_event.reservation_deadline">Reservation Deadline</label>
+			<label index="tx_ajadoevents_domain_model_event.categories">Categories</label>
+			<label index="tx_ajadoevents_domain_model_event.reservations">Reservations</label>
+			<label index="tx_ajadoevents_domain_model_category">Category</label>
+			<label index="tx_ajadoevents_domain_model_category.name">Name</label>
+			<label index="tx_ajadoevents_domain_model_category.visible">Visible</label>
+			<label index="tx_ajadoevents_domain_model_reservation">Reservation</label>
+			<label index="tx_ajadoevents_domain_model_reservation.lastname">Lastname</label>
+			<label index="tx_ajadoevents_domain_model_reservation.firstname">Firstname</label>
+			<label index="tx_ajadoevents_domain_model_reservation.email">Email</label>
+			<label index="tx_ajadoevents_domain_model_reservation.participants">Participants</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="tx_ajadoevents_domain_model_event">Veranstaltung</label>
+			<label index="tx_ajadoevents_domain_model_event.title">Titel</label>
+			<label index="tx_ajadoevents_domain_model_event.subtitle">Untertitel</label>
+			<label index="tx_ajadoevents_domain_model_event.start_date">Beginndatum</label>
+			<label index="tx_ajadoevents_domain_model_event.end_date">Enddatum</label>
+			<label index="tx_ajadoevents_domain_model_event.start_time">Beginnzeit</label>
+			<label index="tx_ajadoevents_domain_model_event.end_time">Endzeit</label>
+			<label index="tx_ajadoevents_domain_model_event.location">Ort</label>
+			<label index="tx_ajadoevents_domain_model_event.location_address">Adresse</label>
+			<label index="tx_ajadoevents_domain_model_event.inhouse">im Haus</label>
+			<label index="tx_ajadoevents_domain_model_event.additional_info">Zusatzinformation</label>
+			<label index="tx_ajadoevents_domain_model_event.description">Beschreibung</label>
+			<label index="tx_ajadoevents_domain_model_event.images">Bild</label>
+			<label index="tx_ajadoevents_domain_model_event.teaser_image">Teaserbild</label>
+			<label index="tx_ajadoevents_domain_model_event.links">Links</label>
+			<label index="tx_ajadoevents_domain_model_event.total_seats">Plätze insgesamt</label>
+			<label index="tx_ajadoevents_domain_model_event.reservation_deadline">Anmeldung möglich bis</label>
+			<label index="tx_ajadoevents_domain_model_event.categories">Kategorien</label>
+			<label index="tx_ajadoevents_domain_model_event.reservations">Reservierungen</label>
+			<label index="tx_ajadoevents_domain_model_category">Kategorie</label>
+			<label index="tx_ajadoevents_domain_model_category.name">Name</label>
+			<label index="tx_ajadoevents_domain_model_category.visible">sichtbar</label>
+			<label index="tx_ajadoevents_domain_model_reservation">Reservierung</label>
+			<label index="tx_ajadoevents_domain_model_reservation.lastname">Nachname</label>
+			<label index="tx_ajadoevents_domain_model_reservation.firstname">Vorname</label>
+			<label index="tx_ajadoevents_domain_model_reservation.email">Email</label>
+			<label index="tx_ajadoevents_domain_model_reservation.participants">Anzahl Teilnehmer</label>
+		</languageKey>
+	</data>
+</T3locallang>

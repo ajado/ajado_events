@@ -1,0 +1,37 @@
+<f:be.container pageTitle="Export Event Information">
+  <div>
+    <f:be.pageInfo /> - 
+    <f:be.pagePath />
+  </div>
+  <h1>Export Reservation List</h1>
+<table class="typo3-dblist">
+	<tr class="t3-row-header">
+		<th>UID</th>
+		<th>Name</th>
+		<th>Datum</th>
+		<th>Plätze</th>
+		<th>Reservierte Plätze</th>
+		<th>Download</th>
+	</tr>
+	<f:for each="{events}" as="event">
+	<tr class="db_list_normal">
+		<td>{event.uid}</td>
+		<td>{event.title}</td>
+		<td>{event.startTimeInfo}</td>
+		<td>{event.totalSeats}</td>
+		<td>{event.reservedSeats}</td>
+		<td>
+			<f:link.action controller="Export" action="exportReservationsAsCsv" arguments="{event : event}">
+				<span class="t3-icon t3-icon-mimetypes t3-icon-mimetypes-text t3-icon-text-csv">&nbsp;</span>
+			</f:link.action>
+			<f:link.action controller="Export" action="listReservationsForEvent" arguments="{event : event}">
+				Liste
+			</f:link.action>
+		</td>
+	</tr>
+	</f:for>
+</table>
+
+<p style="color: lightgrey"><f:for each="{reservationsProcessed}" as="reservationProcessed">{reservationProcessed}-{reservationProcessed.crdate}, </f:for></p>
+
+</f:be.container>

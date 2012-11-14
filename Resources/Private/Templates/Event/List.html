@@ -1,0 +1,88 @@
+{namespace ext=Tx_AjadoEvents_ViewHelpers}
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+<h2 class="stillActive">{title}</h2>
+
+<ul>
+	<f:for each="{events}" as="event">
+		<li>
+			<div class="date">
+	      <div class="weekday">
+	      		<f:if condition="{event.endDate} > 0">
+	      			<f:then>AB</f:then>
+	      			<f:else>{ext:format.dateTime(format: '%A', timestamp: event.startDate)}</f:else>
+	      		</f:if>
+	      </div>
+				<div class="day{f:if( condition: '{event.inhouse}', then: '-inhouse' )}">{ext:format.dateTime(format: '%d', timestamp: event.startDate)}</div>
+				<div class="month">{ext:format.dateTime(format: '%b', timestamp: event.startDate)}</div>
+			</div>
+			<f:if condition="{event.images -> f:count()}>0">
+				<div class="event-list-image"><f:link.action pageUid="{settings.singlePid}" controller="Event" action="show" arguments="{event : event}"><f:image src="uploads/tx_ajadoevents/{event.images.0}" width="140c" height="140" alt="{event.images.0}" /></f:link.action></div>
+			</f:if>
+			<div class="list-description">
+			<f:link.action pageUid="{settings.singlePid}" controller="Event" action="show" arguments="{event : event}"><h2>{event.subtitle}<br /><span class="upper">{event.title}</span></h2></f:link.action>
+			<div class="location">
+				<f:if condition="{event.inhouse}">
+					<f:then>Kulturforum Berlin</f:then>
+					<f:else>{event.location}</f:else>
+				</f:if>
+			</div>
+			<f:format.crop maxCharacters="170" respectHtml="false"><ext:StripTags>{event.description}</ext:StripTags></f:format.crop>
+			<f:link.action pageUid="{settings.singlePid}" controller="Event" action="show" arguments="{event : event}">[mehr]</f:link.action>
+			</div>
+
+		</li>
+	</f:for>
+</ul>
+
+<f:if condition="{stillActive}">
+<h2 class="stillActive">weiterhin aktuell</h2>
+<ul>
+	<f:for each="{stillActive}" as="event">
+		<li>
+			<div class="date">
+	      	<div class="weekday">
+	      		<f:if condition="{event.endDate} > 0">
+	      			<f:then>AB</f:then>
+	      			<f:else>{ext:format.dateTime(format: '%A', timestamp: event.startDate)}</f:else>
+	      		</f:if>
+	      	</div>
+				<div class="day{f:if( condition: '{event.inhouse}', then: '-inhouse' )}">{ext:format.dateTime(format: '%d', timestamp: event.startDate)}</div>
+				<div class="month">{ext:format.dateTime(format: '%b', timestamp: event.startDate)}</div>
+			</div>
+			<f:if condition="{event.images -> f:count()}>0">
+				<div class="event-list-image"><f:link.action pageUid="{settings.singlePid}" controller="Event" action="show" arguments="{event : event}"><f:image src="uploads/tx_ajadoevents/{event.images.0}" width="140c" height="140" alt="{event.images.0}" /></f:link.action></div>
+			</f:if>
+			<div class="list-description">
+			<f:link.action pageUid="{settings.singlePid}" controller="Event" action="show" arguments="{event : event}"><h2>{event.subtitle}<br /><span class="upper">{event.title}</span></h2></f:link.action>
+			<div class="location">
+				<f:if condition="{event.inhouse}">
+					<f:then>Kulturforum Berlin</f:then>
+					<f:else>{event.location}</f:else>
+				</f:if>
+			</div>
+			<f:format.crop maxCharacters="170" respectHtml="false"><ext:StripTags>{event.description}</ext:StripTags></f:format.crop>
+			<f:link.action pageUid="{settings.singlePid}" controller="Event" action="show" arguments="{event : event}">[mehr]</f:link.action>
+			</div>
+
+		</li>
+	</f:for>
+</ul>
+</f:if>
+
+
+</f:section>

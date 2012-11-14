@@ -1,0 +1,27 @@
+<f:be.container pageTitle="Export Event Information">
+<h1>{event.title}</h1>
+<table class="typo3-dblist">
+	<tr class="t3-row-header">
+		<th>Nachname</th>
+		<th>Vorname</th>
+		<th>E-Mail</th>
+		<th>Teilnehmer</th>
+		<th>Reservierungsdatum</th>
+		<th></th>
+	</tr>
+<f:for each="{reservations}" as="reservation">
+	<tr class="db_list_normal">
+		<td>{reservation.lastname}</td>
+		<td>{reservation.firstname}</td>
+		<td>{reservation.email}</td>
+		<td>{reservation.participants}</td>
+		<td>{reservation.crdateFormatted}</td>
+		<td>
+			<f:link.action controller="Export" action="deleteReservationForEvent" arguments="{event : event, reservation: reservation}">
+				Delete
+			</f:link.action>
+		</td>
+	</tr>
+	</f:for>
+</table>
+</f:be.container>

@@ -1,0 +1,31 @@
+<T3DataStructure>
+  <sheets>
+    <sDEF>
+      <ROOT>
+          <TCEforms>
+          <sheetTitle>Event Auswahl</sheetTitle>
+          </TCEforms>
+          <type>array</type>
+          <el>
+          
+<settings.event>
+    <TCEforms>
+        <label>Event</label>
+        <config>
+            <type>select</type>
+            <foreign_table>tx_ajadoevents_domain_model_event</foreign_table>
+            <minitems>1</minitems>
+            <maxitems>10</maxitems>
+            <multiple>1</multiple>
+            <size>5</size>
+            <autoSizeMax>10</autoSizeMax>
+            <itemListStyle>Width:250px</itemListStyle>
+        </config>
+    </TCEforms>
+</settings.event>
+          
+          </el>
+       </ROOT>
+    </sDEF>
+  </sheets>
+</T3DataStructure>

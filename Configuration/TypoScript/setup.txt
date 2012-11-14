@@ -1,0 +1,34 @@
+plugin.tx_ajadoevents {
+	view {
+		templateRootPath = {$plugin.tx_ajadoevents.view.templateRootPath}
+		partialRootPath = {$plugin.tx_ajadoevents.view.partialRootPath}
+		layoutRootPath = {$plugin.tx_ajadoevents.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$plugin.tx_ajadoevents.persistence.storagePid}
+	}
+	settings {
+		teaserCategoryId = 1
+		singlePid =
+	}
+	settings.calendar {
+		cssFile = EXT:ajado_events/Resources/Public/cssCalendar.css
+		
+		timeZone =
+		renderNavigationAsImages = 0
+		file.arrowLeft = 
+		file.arrowLeftDisabled =
+		file.arrowRight =
+		imageArrows = 
+		
+		linkUid =
+		hideIfInPast =
+	}
+}
+
+plugin.tx_ajadoevents._CSS_DEFAULT_STYLE (
+	input.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+)

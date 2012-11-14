@@ -1,0 +1,64 @@
+<label for="title">
+	<f:translate key="tx_ajadoevents_domain_model_event.title" /> <span class="required">(required)</span>
+</label><br />
+	<f:form.textbox property="title" /><br />
+<label for="subtitle">
+	<f:translate key="tx_ajadoevents_domain_model_event.subtitle" />
+</label><br />
+	<f:form.textbox property="subtitle" /><br />
+<label for="startDate">
+	<f:translate key="tx_ajadoevents_domain_model_event.start_date" /> <span class="required">(required)</span>
+</label><br />
+	<f:form.textbox property="startDate"  value="{event.startDate->f:format.date()}" /><br />
+<label for="endDate">
+	<f:translate key="tx_ajadoevents_domain_model_event.end_date" />
+</label><br />
+	<f:form.textbox property="endDate"  value="{event.endDate->f:format.date()}" /><br />
+<label for="startTime">
+	<f:translate key="tx_ajadoevents_domain_model_event.start_time" />
+</label><br />
+	<f:form.textbox property="startTime"  value="{event.startTime->f:format.date()}" /><br />
+<label for="endTime">
+	<f:translate key="tx_ajadoevents_domain_model_event.end_time" />
+</label><br />
+	<f:form.textbox property="endTime"  value="{event.endTime->f:format.date()}" /><br />
+<label for="location">
+	<f:translate key="tx_ajadoevents_domain_model_event.location" />
+</label><br />
+	<f:form.textbox property="location" /><br />
+<label for="locationAddress">
+	<f:translate key="tx_ajadoevents_domain_model_event.location_address" />
+</label><br />
+	<f:form.textarea property="locationAddress" cols="40" rows="15" /><br />
+<label for="inhouse">
+	<f:translate key="tx_ajadoevents_domain_model_event.inhouse" />
+</label><br />
+	<f:form.textbox property="inhouse" /><br />
+<label for="additionalInfo">
+	<f:translate key="tx_ajadoevents_domain_model_event.additional_info" />
+</label><br />
+	<f:form.textarea property="additionalInfo" cols="40" rows="15" /><br />
+<label for="description">
+	<f:translate key="tx_ajadoevents_domain_model_event.description" />
+</label><br />
+	<f:form.textarea property="description" cols="40" rows="15" /><br />
+<label for="images">
+	<f:translate key="tx_ajadoevents_domain_model_event.images" />
+</label><br />
+	<f:form.upload property="images" /><br />
+<label for="teaserImage">
+	<f:translate key="tx_ajadoevents_domain_model_event.teaser_image" />
+</label><br />
+	<f:form.upload property="teaserImage" /><br />
+<label for="links">
+	<f:translate key="tx_ajadoevents_domain_model_event.links" />
+</label><br />
+	<f:form.textarea property="links" cols="40" rows="15" /><br />
+<label for="totalSeats">
+	<f:translate key="tx_ajadoevents_domain_model_event.total_seats" />
+</label><br />
+	<f:form.textbox property="totalSeats" /><br />
+<label for="reservationDeadline">
+	<f:translate key="tx_ajadoevents_domain_model_event.reservation_deadline" />
+</label><br />
+	<f:form.textbox property="reservationDeadline"  value="{event.reservationDeadline->f:format.date()}" /><br />

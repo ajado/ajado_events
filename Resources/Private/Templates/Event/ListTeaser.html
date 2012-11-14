@@ -1,0 +1,51 @@
+{namespace ext=Tx_AjadoEvents_ViewHelpers}
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+
+<ul id="event-teaser-slideshow" class="slideshow">
+	<f:for each="{events}" as="event" key="key">
+		<f:if condition="{event.teaserImage}">
+    		 <li<f:if condition="{key} <= 1"> class="active"</f:if>>
+				<f:if condition="{event.teaserImage -> f:count()}>0">
+					<div class="event-teaser-image">
+						<f:image src="uploads/tx_ajadoevents/{event.teaserImage}" width="700c" height="306" alt="" />
+					</div>
+					<div class="event-teaser-title">
+						<span class="subtitle">{event.subtitle}</span><br />
+						<span class="title">{event.title}</span>
+						<span class="dateinfo">
+						<f:if condition="{event.endDate} > 0"><f:then>Ab </f:then><f:else>{ext:format.dateTime(format: '%A', timestamp: event.startDate)}, </f:else></f:if>{ext:format.dateTime(format: '%d. %m. %Y', timestamp: event.startDate)} 
+						</span>
+					</div>
+					<div class="event-teaser-text">
+						<p class="highlighted">
+							<b>Zeit:</b> <f:format.html parseFuncTSPath="">{event.dateInfo}</f:format.html></b><br />
+							<b>Ort:</b>
+							<f:if condition="{event.inhouse}">
+								<f:then>Kulturforum Berlin</f:then>
+								<f:else>{event.location}</f:else>
+							</f:if>
+						</p>
+						<p><f:format.crop maxCharacters="280" respectHtml="false"><ext:StripTags>{event.description}</ext:StripTags></f:format.crop></p>
+						<div class="details-link"><f:link.action pageUid="{settings.singlePid}" action="show" controller="Event" arguments="{event : event}">Details anzeigen</f:link.action></div>
+					</div>
+				</f:if>
+			</li>
+		</f:if>
+	</f:for>
+</ul>
+
+</f:section>
